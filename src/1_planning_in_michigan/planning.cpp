@@ -51,9 +51,11 @@ std::vector<float> getEdgeCosts(int n, Graph& g)
 int getParent(int n, Graph& g)
 {
     // *** Task: Implement this function *** //
-
-    return -1;
-
+    if(g.nodes[n].parent.empty())
+    {
+        return -1;    
+    }
+    return g.nodes[n].parent;
     // *** End student code *** //
 }
 
@@ -76,6 +78,35 @@ std::vector<int> bfs(int start, int goal, Graph& g)
     std::queue<int> visit_queue;
 
     // *** Task: Implement this function *** //
+
+    //Initialize
+    for(int i = 0; i < g.nodes.size(); i++)
+    {
+        g.nodes[i].parent = NULL;
+        g.nodes[i].cost = HIGH;
+        g.nodes[i].visited = false;
+    }
+
+    g.nodes[start].parent = NULL;
+    g.nodes[start].cost = 0;
+    
+    visit_queue.push(start);
+
+
+
+    //Iterate
+
+
+
+    
+
+
+
+
+
+
+
+
 
     // *** End student code *** //
 

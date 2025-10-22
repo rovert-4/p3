@@ -19,7 +19,9 @@ struct Node
     std::string city;
     
     // *** Task: Add variables necessary for running your search algorithms *** //
-
+    float cost;
+    int parent;
+    bool visited;
     // *** End student code *** //
 };
 
