@@ -22,6 +22,7 @@ struct Node
     float cost;
     int parent;
     bool visited;
+    bool queued;
     // *** End student code *** //
 };
 

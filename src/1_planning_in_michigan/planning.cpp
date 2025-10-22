@@ -67,6 +67,15 @@ void initGraph(Graph& g)
         Node n;
         n.city = g.data[i];
         g.nodes.push_back(n);
+
+        //Initialize
+        for(int i = 0; i < g.nodes.size(); i++)
+        {
+            g.nodes[i].parent = NULL;
+            g.nodes[i].cost = HIGH;
+            g.nodes[i].visited = false;
+            g.nodes[i].queued = false;
+        }
     }
 }
 
@@ -79,32 +88,31 @@ std::vector<int> bfs(int start, int goal, Graph& g)
 
     // *** Task: Implement this function *** //
 
-    //Initialize
-    for(int i = 0; i < g.nodes.size(); i++)
-    {
-        g.nodes[i].parent = NULL;
-        g.nodes[i].cost = HIGH;
-        g.nodes[i].visited = false;
-    }
+    
 
     g.nodes[start].parent = NULL;
     g.nodes[start].cost = 0;
     
     visit_queue.push(start);
+    g.nodes[start].queued = true;
 
     //Iterate
     while((visit_queue.empty() == false) && visit_queue.front() != goal)
     {
         
-        std::vector <int> temp_neighbors = getNeighbors(visit_queue.front(), g)
+        std::vector<int> temp_neighbors = getNeighbors(visit_queue.front(), g);
         for(int i = 0; i < temp_neighbors.size(); i++)
         {
-            if(!(g.nodes[temp_neighbors(i)].visited) && !(visit_queue.contains(temp_neighbors(i))))
+            if(!(g.nodes[temp_neighbors[i]].visited) && !(g.nodes[temp_neighbors[i]].queued)) 
             {
-                visit_queue.push(temp_neighbors(i));
+                visit_queue.push(temp_neighbors[i]);
+                if(g.nodes[temp_neighbors[i]].cost > (g.nodes[visit_queue.front()].cost + getEdgeCosts(temp_neighbors[i], g)[i]))
+                {
+                    g.nodes[temp_neighbors[i]].parent = visit_queue.front();
+                    g.nodes[temp_neighbors[i]].cost = (g.nodes[visit_queue.front()].cost + getEdgeCosts(temp_neighbors[i], g)[i]);
+                }
             }
         }
-
 
         g.nodes[visit_queue.front()].visited = true;
         visit_queue.pop();
