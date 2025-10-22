@@ -92,10 +92,23 @@ std::vector<int> bfs(int start, int goal, Graph& g)
     
     visit_queue.push(start);
 
-
-
     //Iterate
+    while((visit_queue.empty() == false) && visit_queue.front() != goal)
+    {
+        
+        std::vector <int> temp_neighbors = getNeighbors(visit_queue.front(), g)
+        for(int i = 0; i < temp_neighbors.size(); i++)
+        {
+            if(!(g.nodes[temp_neighbors(i)].visited) && !(visit_queue.contains(temp_neighbors(i))))
+            {
+                visit_queue.push(temp_neighbors(i));
+            }
+        }
 
+
+        g.nodes[visit_queue.front()].visited = true;
+        visit_queue.pop();
+    }
 
 
     
