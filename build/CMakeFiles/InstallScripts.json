@@ -1,0 +1,10 @@
+{
+	"InstallScripts" : 
+	[
+		"/Users/trev/Downloads/p3_path_planning_template_f25/build/cmake_install.cmake",
+		"/Users/trev/Downloads/p3_path_planning_template_f25/build/_deps/gtest-build/cmake_install.cmake",
+		"/Users/trev/Downloads/p3_path_planning_template_f25/build/_deps/gtest-build/googlemock/cmake_install.cmake",
+		"/Users/trev/Downloads/p3_path_planning_template_f25/build/_deps/gtest-build/googletest/cmake_install.cmake"
+	],
+	"Parallel" : false
+}
